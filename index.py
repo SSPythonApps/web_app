@@ -1,6 +1,8 @@
 import streamlit as st
 import FruitList as fl
 
+st.set_page_config(layout="wide")
+
 items = fl.GetFruitList()
 
 def OnItemInput():
@@ -10,7 +12,10 @@ def OnItemInput():
 
 
 st.title('Food Inventory')
-st.subheader('By: Shahil Saha')
+st.subheader("By: Shahil Saha")
+st.write("<b>Test Method</b>", unsafe_allow_html=True)
+st.text_input(label='Enter your favorite fruit', placeholder='eg: Mango', on_change=OnItemInput, key="kItemInput")
+
 
 with st.container(border= True):
     for index, i in enumerate(items):
@@ -22,7 +27,3 @@ with st.container(border= True):
             del st.session_state[i]
             st.rerun()
 
-st.text_input(label='Enter your favorite fruit', placeholder='Mango', on_change=OnItemInput, key="kItemInput")
-
-with st.container(border= True):
-    st.write("This is a container")
